@@ -10,7 +10,10 @@
     <h1>Convert Text to Code</h1>
     <div id="container">
         <div class="col">
-            <textarea name="" id="input" rows="10"></textarea>
+            <div class="uploadFile">
+                <button>Upload File</button> or add text below
+            </div>
+            <textarea name="" id="input" rows="10" placeholder="Type or paste text here"></textarea>
         </div>
         <div class="col">
             <div class="tooltip">
@@ -19,7 +22,7 @@
                   Copy text
                 </button>
             </div>
-            <div id="result"></div>
+            <div id="result">[]</div>
         </div>
     </div>
     <script src="index.js"></script>
