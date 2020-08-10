@@ -29,12 +29,8 @@ h1 {
     width: 40%;
     display: inline-block;
     vertical-align:top;
-    margin: 0 auto;
     padding: 20px;
-}
-
-.showEscCodes {
-    width: 100%;
+    text-align: left;
 }
 
 textarea {
@@ -59,7 +55,11 @@ textarea {
     }
 }
 
-button {
+input {
+    font-size: .8em;
+}
+
+.uploadFile, button {
     font-size: 1em;
     font-family: monospace;
     margin-bottom: 20px;
@@ -68,7 +68,6 @@ button {
 .tooltip {
     position: relative;
     display: block;
-    text-align: center;
 }
   
   .tooltip .tooltiptext {

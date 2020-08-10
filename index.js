@@ -1,14 +1,36 @@
-const textInput = document.getElementById('input');
+const textArea = document.querySelector('textarea');
 const result = document.getElementById('result');
 const copyButton = document.getElementById('copyBtn');
 const tooltip = document.getElementById('myTooltip');
-const showEscCodesButton = document.getElementById('showEscCodesBtn');
+const fileButton = document.querySelector('input');
 
-const convertToArray = (text) => text.split(',');
+fileButton.addEventListener('change', () => {
+    let files = fileButton.files;
+    if(files.length === 0) return;
 
-textInput.addEventListener('input', e => {
-    let userInput = e.target.value;
-    result.textContent =  userInput.length ? JSON.stringify(convertToArray(userInput)) : '[]';
+    const file = files[0]
+
+    let reader = new FileReader();
+
+    reader.onload = e => {
+        const file = e.target.result;
+        const lines = file.split(/\r\n|\n/);
+        textArea.value = lines.join('\n');
+        let text = textArea.value;
+        renderResult(text);
+    };
+
+    reader.onerror = e => alert(e.target.error.name);
+
+    reader.readAsText(file);
+});
+
+const convertToArray = (text) => text.split(/\n|,/);
+
+const renderResult = text => result.textContent =  text.length ? JSON.stringify(convertToArray(text)) : '[]';
+
+textArea.addEventListener('input', e => {
+    renderResult(e.target.value);
 });
 
 const copyResult = () => {
