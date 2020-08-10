@@ -11,14 +11,33 @@
     <div id="container">
         <div class="col">
             <div class="uploadFile">
-                <p>Add text below or</p> 
+                <p>Add text below or upload a file <span style="color: red;">*only .txt (for now)</span></p> 
                 <input type="file" />
+            </div>
+            <div class="filters">
+                <span>Separate by: </span>
+                <span>
+                    <input type="checkbox" id="commas" name="commas" value="," checked>
+                    <label for="commas">Commas (,)</label>
+                </span>
+                <span>
+                    <input type="checkbox" id="newlines" name="newlines" value="\n">
+                    <label for="newlines">Newlines (\n)</label>
+                </span>
+                <span>
+                    <input type="checkbox" id="tabs" name="tabs" value="\t">
+                    <label for="tabs">Tabs (\t)</label>
+                </span>
+                <span>
+                    <input type="checkbox" id="whitespaces" name="whitespaces" value="\s">
+                    <label for="whitespaces">Whitespaces</label>
+                </span>
             </div>
             <textarea name="" id="textInput" rows="10" placeholder="Type or paste text here"></textarea>
         </div>
         <div class="col">
+            <p>Conversion results</p>
             <div class="tooltip">
-                <p>Conversion results</p>
                 <button id="copyBtn">
                   <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
                   Copy text

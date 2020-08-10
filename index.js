@@ -3,6 +3,31 @@ const result = document.getElementById('result');
 const copyButton = document.getElementById('copyBtn');
 const tooltip = document.getElementById('myTooltip');
 const fileButton = document.querySelector('input');
+const separators = document.querySelectorAll('input[type=checkbox]');
+
+const convertToArray = text => {
+    let regex = "";
+    separators.forEach(separator => {
+        if(separator.checked) {
+            if(regex.length)
+                regex += '|'
+            regex += separator.value;
+        }
+    });
+    return text.split(new RegExp(regex));
+}
+
+const renderResult = text => result.textContent =  text.length ? JSON.stringify(convertToArray(text)) : '[]';
+
+textArea.addEventListener('input', e => {
+    renderResult(e.target.value);
+});
+
+separators.forEach(separator => {
+    separator.addEventListener('change', () => {
+        textArea.value.length && renderResult(textArea.value);
+    })
+});
 
 fileButton.addEventListener('change', () => {
     let files = fileButton.files;
@@ -23,14 +48,6 @@ fileButton.addEventListener('change', () => {
     reader.onerror = e => alert(e.target.error.name);
 
     reader.readAsText(file);
-});
-
-const convertToArray = (text) => text.split(/\n|,/);
-
-const renderResult = text => result.textContent =  text.length ? JSON.stringify(convertToArray(text)) : '[]';
-
-textArea.addEventListener('input', e => {
-    renderResult(e.target.value);
 });
 
 const copyResult = () => {

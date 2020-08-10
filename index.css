@@ -17,7 +17,7 @@ h1 {
     text-align: center;
     font-size: 3em !important;
     margin-top: 0;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 #container {
@@ -65,9 +65,17 @@ input {
     margin-bottom: 20px;
 }
 
+.filters {
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+.filters > span {
+    white-space: nowrap;
+}
+
 .tooltip {
     position: relative;
-    display: block;
 }
   
   .tooltip .tooltiptext {
@@ -81,8 +89,8 @@ input {
     position: absolute;
     z-index: 1;
     bottom: 150%;
-    left: 50%;
-    margin-left: -75px;
+    left: 0;
+    margin-left: -15px;
     opacity: 0;
     transition: opacity 0.3s;
   }
