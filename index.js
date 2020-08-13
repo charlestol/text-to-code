@@ -17,6 +17,7 @@ const convertToArray = text => {
     return text.split(new RegExp(regex));
 }
 
+
 const renderResult = text => result.textContent =  text.length ? JSON.stringify(convertToArray(text)) : '[]';
 
 textArea.addEventListener('input', e => {
