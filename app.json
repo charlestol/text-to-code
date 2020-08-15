@@ -1,0 +1,7 @@
+{
+  "buildpacks": [
+    {
+      "url": "https://github.com/chazt128/text-to-code"
+    }
+  ]
+}
