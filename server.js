@@ -3,7 +3,7 @@ const fs = require('fs');
 const url = require('url');
 const lookup = require('mime-types').lookup;
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const server = http.createServer((req,res) => {
     let parsedURL = url.parse(req.url, true);
