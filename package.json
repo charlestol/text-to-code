@@ -1,0 +1,25 @@
+{
+  "name": "text-to-code",
+  "version": "1.0.0",
+  "description": "Covert your text to an array",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chazt128/text-to-code.git"
+  },
+  "author": "Charles Tolentino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chazt128/text-to-code/issues"
+  },
+  "homepage": "https://github.com/chazt128/text-to-code#readme",
+  "dependencies": {
+    "mime-types": "^2.1.27"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
