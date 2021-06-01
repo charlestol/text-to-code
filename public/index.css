@@ -65,12 +65,12 @@ input {
     margin-bottom: 20px;
 }
 
-.filters {
+.filters, .removers {
     margin: 20px 0;
     word-wrap: break-word;
 }
 
-.filters > span {
+.filters > span, .removers > span {
     white-space: nowrap;
 }
 
