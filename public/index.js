@@ -2,19 +2,32 @@ const textArea = document.querySelector('textarea');
 const result = document.getElementById('result');
 const copyButton = document.getElementById('copyBtn');
 const tooltip = document.getElementById('myTooltip');
-const fileButton = document.querySelector('input');
-const separators = document.querySelectorAll('input[type=checkbox]');
+const separaters = document.querySelectorAll('.separaters input[type=checkbox]');
+const removers = document.querySelectorAll('.removers input[type=checkbox]');
+const checkboxes = document.querySelectorAll('input[type=checkbox]');
 
 const convertToArray = text => {
     let regex = "";
-    separators.forEach(separator => {
-        if(separator.checked) {
+    let res = [];
+    separaters.forEach(separater => {
+        if(separater.checked) {
             if(regex.length)
                 regex += '|'
-            regex += separator.value;
+            regex += separater.value;
         }
     });
-    return text.split(new RegExp(regex));
+
+    res = text.split(new RegExp(regex));
+
+    removers.forEach(remover => {
+        if(remover.checked) {
+            if(remover.value === "empty") {
+                res = res.filter(item => item.length > 0);
+            }
+        }
+    });
+
+    return res;
 }
 
 
@@ -24,31 +37,10 @@ textArea.addEventListener('input', e => {
     renderResult(e.target.value);
 });
 
-separators.forEach(separator => {
-    separator.addEventListener('change', () => {
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
         textArea.value.length && renderResult(textArea.value);
     })
-});
-
-fileButton.addEventListener('change', () => {
-    let files = fileButton.files;
-    if(files.length === 0) return;
-
-    const file = files[0]
-
-    let reader = new FileReader();
-
-    reader.onload = e => {
-        const file = e.target.result;
-        const lines = file.split(/\r\n|\n/);
-        textArea.value = lines.join('\n');
-        let text = textArea.value;
-        renderResult(text);
-    };
-
-    reader.onerror = e => alert(e.target.error.name);
-
-    reader.readAsText(file);
 });
 
 const copyResult = () => {
