@@ -33,6 +33,10 @@ h1 {
     text-align: left;
 }
 
+.separaters span, .removers span {
+    display: inline-block;
+}
+
 textarea {
     resize: none;
     padding: 20px;
