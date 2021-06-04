@@ -44,6 +44,10 @@ textarea {
     font-size: 1em;
 }
 
+.result-heading {
+    margin-top: 0;
+}
+
 #result {
     background-color: rgb(230, 228, 228);
     border: #000 solid 1px;
