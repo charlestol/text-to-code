@@ -31,22 +31,25 @@ h1 {
     vertical-align:top;
     padding: 20px;
     text-align: left;
+    box-sizing: border-box;
 }
 
-.separaters span, .removers span {
-    display: inline-block;
-    margin-bottom: 4px;
+.separators > *, .removers > * {
+    margin-top: 8px;
+}
+
+#customSeparatorInput, #customRemoverInput {
+    max-width: 130px;
+    /* width: 100%; */
 }
 
 textarea {
     resize: none;
     padding: 20px;
-    width: 80%;
+    width: 100%;
     font-size: 1em;
-}
-
-.result-heading {
-    margin-top: 0;
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 #result {
@@ -60,7 +63,7 @@ textarea {
 @media screen and (max-width: 767px) {
     .col {
         display: block;
-        width: 90%;
+        width: 100%;
     }
 }
 
@@ -74,19 +77,21 @@ input {
     margin-bottom: 20px;
 }
 
-.filters, .removers {
-    margin: 20px 0;
-    word-wrap: break-word;
+.separators {
+    margin-bottom: 20px;
 }
 
-.filters > span, .removers > span {
+.separators > span, .removers > span {
     white-space: nowrap;
 }
 
 .tooltip {
     position: relative;
 }
-  
+  #copyBtn {
+    margin-bottom: 20px;
+  }
+
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 140px;

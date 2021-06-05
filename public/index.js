@@ -2,7 +2,7 @@ const textArea = document.querySelector('textarea');
 const result = document.getElementById('result');
 const copyButton = document.getElementById('copyBtn');
 const tooltip = document.getElementById('myTooltip');
-const separaters = document.querySelectorAll('.separaters input[type=checkbox]');
+const separators = document.querySelectorAll('.separators input[type=checkbox]');
 const removers = document.querySelectorAll('.removers input[type=checkbox]');
 const checkboxes = document.querySelectorAll('input[type=checkbox]');
 
@@ -14,7 +14,7 @@ const customRemoverInput = document.getElementById('customRemoverInput');
 const convertToArray = text => {
     let regex = "";
     let res = [];
-    separaters.forEach(separater => {
+    separators.forEach(separater => {
         if(separater.checked) {
             if(regex.length) {
                 regex += '|';
