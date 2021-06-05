@@ -33,12 +33,24 @@
                     <input type="checkbox" id="whitespaces" name="whitespaces" value="\s">
                     <label for="whitespaces">Whitespaces</label>
                 </span>
+                <span>
+                    <input type="checkbox" id="customSeparator" name="customSeparator" value="" disabled>
+                    <label for="customSeparator">
+                        Custom: <input type="text" id="customSeparatorInput" />
+                    </label>
+                </span>
             </div>
             <div class="removers">
                 <span>Remove: </span>
                 <span>
                     <input type="checkbox" id="emptyStrings" name="emptyStrings" value="empty">
                     <label for="emptyStrings">Empty Strings ("")</label>
+                </span>
+                <span>
+                    <input type="checkbox" id="customRemover" name="customRemover" value="" disabled>
+                    <label for="customRemover">
+                        Custom: <input type="text" id="customRemoverInput" />
+                    </label>
                 </span>
             </div>
             <textarea name="" id="textInput" rows="10" placeholder="Type or paste text here"></textarea>
@@ -54,6 +66,6 @@
             <div id="result">[]</div>
         </div>
     </div>
-    <script src="index.min.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

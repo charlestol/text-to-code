@@ -6,23 +6,31 @@ const separaters = document.querySelectorAll('.separaters input[type=checkbox]')
 const removers = document.querySelectorAll('.removers input[type=checkbox]');
 const checkboxes = document.querySelectorAll('input[type=checkbox]');
 
+const customSeparator = document.getElementById('customSeparator');
+const customSeparatorInput = document.getElementById('customSeparatorInput');
+const customRemover = document.getElementById('customRemover');
+const customRemoverInput = document.getElementById('customRemoverInput');
+
 const convertToArray = text => {
     let regex = "";
     let res = [];
     separaters.forEach(separater => {
         if(separater.checked) {
-            if(regex.length)
-                regex += '|'
+            if(regex.length) {
+                regex += '|';
+            }
             regex += separater.value;
         }
     });
 
-    res = text.split(new RegExp(regex));
+    res = text.split(new RegExp(regex)).filter(item => item.length);
 
     removers.forEach(remover => {
         if(remover.checked) {
             if(remover.value === "empty") {
                 res = res.filter(item => item.length > 0);
+            } else {
+                res = res.filter(item => item !== remover.value);
             }
         }
     });
@@ -40,13 +48,42 @@ textArea.addEventListener('input', e => {
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
         textArea.value.length && renderResult(textArea.value);
-    })
+    });
+});
+
+customSeparatorInput.addEventListener('input', e => {
+    const { value } = e.target;
+    customSeparator.value = value;
+
+    if(customSeparator.checked) {
+        if(value.length) {
+            textArea.value.length && renderResult(textArea.value);
+        } else {
+            customSeparator.click();
+        }
+    }
+
+    customSeparator.disabled = value.length ? false : true;
+});
+
+customRemoverInput.addEventListener('input', e => {
+    const { value } = e.target;
+    customRemover.value = value;
+
+    if(customRemover.checked) {
+        if(value.length) {
+            textArea.value.length && renderResult(textArea.value);
+        } else {
+            customRemover.click();
+        }
+    }
+
+    customRemover.disabled = value.length ? false : true;
 });
 
 const copyResult = () => {
     var range = document.createRange();
     range.selectNode(result);
-    console.log(range)
     window.getSelection().removeAllRanges(); // clear current selection
     window.getSelection().addRange(range); // to select text
     document.execCommand("copy");
@@ -57,5 +94,5 @@ const copyResult = () => {
 
 const outFunc = () => tooltip.innerHTML = "Copy to clipboard";
 
-  copyButton.addEventListener('click', copyResult);
-  copyButton.addEventListener('mouseout', outFunc)
+copyButton.addEventListener('click', copyResult);
+copyButton.addEventListener('mouseout', outFunc);

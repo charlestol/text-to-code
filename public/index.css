@@ -35,6 +35,7 @@ h1 {
 
 .separaters span, .removers span {
     display: inline-block;
+    margin-bottom: 4px;
 }
 
 textarea {
